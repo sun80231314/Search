@@ -1,0 +1,53 @@
+
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load staticfiles %}
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>lcv-search 搜索引擎</title>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="container">
+	<div id="bd">
+        <div id="main">
+        	<h1 class="title">
+            	<div class="logo large"></div>
+            </h1>
+            <div class="inputArea">
+            	<input type="text" class="searchInput" />
+                <input type="button" class="searchButton" onclick="add_search()" />
+            </div>
+
+            <div class="historyArea">
+            	<p class="history">
+                	<label>热门搜索：</label>
+                    <a href="/search?q=人工智能">人工智能</a>
+                    <a href="/search?q=大数据时代">大数据时代</a>
+                    <a href="/search?q=互联网时代">互联网时代</a>
+                    <a href="/search?q=Python">Python</a>
+                    <a href="/search?q=JAVA">JAVA</a>
+                </p>
+            </div>
+        </div><!-- End of main -->
+    </div><!--End of bd-->
+
+    <div class="foot">
+    	<div class="wrap">
+            <div class="copyright">Copyright &copy;uimaker.com 版权所有  E-mail:admin@uimaker.com</div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/global.js' %}"></script>
+<script type="text/javascript">
+    var search_url = "{% url 'search' %}"
+    function add_search(){
+        var val = $(".searchInput").val();
+        window.location.href=search_url+'?q='+val
+    }
+</script>
+</html>
